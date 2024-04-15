@@ -1,0 +1,114 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>D-Play</title>
+    <!-- Logo -->
+    <link rel="icon" href="{% static 'core/img/logo.jpeg' %}">
+    <!-- foont -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Edu+NSW+ACT+Foundation:wght@500&display=swap" rel="stylesheet">
+    <!-- Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="{% static 'core/css/index.css' %}">
+
+</head>
+<body>
+  <header>
+    <nav class="navbar navbar-dark bg-dark navbar-expand-lg ">
+        <div class="container-fluid">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+                <div class="navbar-nav">
+                    <a class="nav-link active" aria-current="page" href="{% url 'index' %}">INICIO</a>
+                    <a class="nav-link" href="{% url 'videojuegos' %}">Noticias</a>
+                    <a class="nav-link" href="{% url 'foro' %}">Foro</a>
+                    {% if user.is_authenticated %}
+                        <a class="nav-link" href="{% url 'ver_perfil' %}">Perfil</a>
+                        <a class="nav-link" href="{% url 'logout' %}">Cerrar sesión</a>
+                    {% else %}
+                        <a class="nav-link" href="{% url 'sesion' %}">Iniciar sesión</a>
+                        <a class="nav-link" href="{% url 'registrate' %}" tabindex="-1" aria-disabled="true">Regístrate</a>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </nav>
+</header>
+    <br>
+    
+    <div class="container">
+      {% if messages %}
+          {% for message in messages %}
+              <div class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert">
+                  {{ message }}
+                  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+              </div>
+          {% endfor %}
+      {% endif %}
+      <h2>Iniciar Sesión</h2>
+      <form class="row g-3 needs-validation" novalidate method="post" action="{% url 'sesion' %}">
+          {% csrf_token %}
+          <label for="username">Usuario:</label>
+          <input type="text" id="username" name="username" required><br><br>
+          <label for="password">Contraseña:</label>
+          <input type="password" id="password" name="password" required><br><br>
+          <button type="submit" class="btn btn-primary">Iniciar Sesión</button>
+      </form>
+  </div>
+  
+  <!-- Modal Olvidar Contraseña -->
+  <div class="modal fade" id="forgotPasswordModal" tabindex="-1" aria-labelledby="forgotPasswordModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="forgotPasswordModalLabel">Recuperar Contraseña</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <p>Por favor, ingrese su correo electrónico para recuperar su contraseña.</p>
+          <input type="email" class="form-control" id="forgotPasswordEmail" placeholder="Correo electrónico" required>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+          <button type="button" class="btn btn-primary">Recuperar Contraseña</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.1.3/js/bootstrap.bundle.min.js"></script>
+  <script>
+      // Script de validación personalizado
+      (function () {
+          'use strict';
+  
+          // Selección de los elementos del formulario
+          const form = document.querySelector('.needs-validation');
+  
+          // Agregar evento de submit al formulario
+          form.addEventListener('submit', function (event) {
+              // Verificar si el formulario es válido
+              if (!form.checkValidity()) {
+                  event.preventDefault();
+                  event.stopPropagation();
+              }
+  
+              // Agregar las clases de validación de Bootstrap
+              form.classList.add('was-validated');
+          }, false);
+      })();
+  </script>
+      <br>
+
+</div>
+    <!-- Bootstrap JS para cerrar alertas -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

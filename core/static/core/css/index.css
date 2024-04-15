@@ -1,0 +1,117 @@
+body{
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    background-color: #d3d3d3;
+  font-family: "Edu NSW ACT Foundation", cursive;
+  font-optical-sizing: auto;
+  font-weight: 500;
+  font-style: normal;
+}
+
+nav .nav-link{
+    font-size: 1.5rem;
+}
+.row{
+    justify-content: center;
+}
+.card-title{
+    font-size: 1.5rem;
+}
+.card-text{
+    font-size: 1.5rem;
+}
+
+
+
+
+
+/* Formulario */
+.container-form {
+    background-color: aquamarine;
+    max-width: 600px;
+    margin: 50px auto;
+    text-align: center;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+label, input {
+    font-size: 1.2rem;
+    font-weight: 600;
+    margin: auto;
+    display: block;
+    margin-bottom: 10px;
+}
+.container-form h2{
+    color: #f82f0b;
+    font-size: 2rem;
+}
+input[type="submit"] {
+    padding: 10px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+input[type="reset"] {
+    padding: 10px;
+    background-color: #f82f0b;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+/* Estilos para tablet */
+@media (max-width: 768px) {
+    .container-form {
+        max-width: 90%;
+    }
+}
+
+/* Estilos para dispositivos móviles */
+@media (max-width: 480px) {
+    .container-form {
+        max-width: 90%;
+        padding: 10px;
+    }
+    input[type="submit"], input[type="reset"] {
+        padding: 8px;
+        font-size: 1rem;
+    }
+}
+
+
+
+
+
+
+/* Footer */
+
+.footer {
+    padding: 30px 0;
+    color: #333;
+}
+.footer h3 {
+    color: #555;
+    font-size: 2rem;
+}
+.footer ul {
+    list-style-type: none;
+    padding: 0;
+}
+.footer ul li {
+     margin-bottom: 10px;
+}
+.footer ul li a ,p {
+    color: #666;
+    text-decoration: none;
+    font-size: 1.5rem;
+}
+.footer ul li a:hover {
+    color: #6200ff;
+}
+

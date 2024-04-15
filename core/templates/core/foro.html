@@ -1,0 +1,177 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>D-Play</title>
+    <link rel="icon" href="{% static 'core/img/logo.jpeg' %}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Edu+NSW+ACT+Foundation:wght@500&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="{% static 'core/css/index.css' %}">
+</head>
+<body>
+    <header>
+        <nav class="navbar navbar-dark bg-dark navbar-expand-lg ">
+            <div class="container-fluid">
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+                    <div class="navbar-nav">
+                        <a class="nav-link active" aria-current="page" href="{% url 'index' %}">INICIO</a>
+                        <a class="nav-link" href="{% url 'videojuegos' %}">Noticias</a>
+                        <a class="nav-link" href="{% url 'foro' %}">Foro</a>
+                        {% if user.is_authenticated %}
+                            <a class="nav-link" href="{% url 'ver_perfil' %}">Perfil</a>
+                            <a class="nav-link" href="{% url 'logout' %}">Cerrar sesión</a>
+                        {% else %}
+                            <a class="nav-link" href="{% url 'sesion' %}">Iniciar sesión</a>
+                            <a class="nav-link" href="{% url 'registrate' %}" tabindex="-1" aria-disabled="true">Regístrate</a>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </header>  
+
+    <br>
+
+    <div class="container">
+      <div class="row">
+          <div class="col-md-12 mt-3">
+                <h1 class="my-4">Foro de Comentarios</h1>
+          </div>
+      </div>
+    </div>
+
+    <br>
+
+    <div class="container">
+        {% if messages %}
+        {% for message in messages %}
+            <div class="alert alert-{{ message.tags }}">{{ message }}</div>
+        {% endfor %}
+        {% endif %}
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                {% if user.is_authenticated %}
+                <form action="{% url 'crear_videojuego' %}" method="post">
+                    {% csrf_token %}
+                    <div class="mb-3">
+                        <label for="tipo_videojuego" class="form-label ">Tipo de Videojuego</label>
+                        <select class="form-select" id="tipo_videojuego" name="tipo_videojuego">
+                            <option value="" selected disabled>Selecciona un videojuego</option>
+                            <option value="Opción 1">Uncharted-Legacy</option>
+                            <option value="Opción 2">Spider-man</option>
+                            <option value="Opción 3">Death-Stranding</option>
+                            <option value="Opción 3">Demons-Souls</option>
+                            <option value="Opción 3">Destruction-Allstars</option>
+                            <option value="Opción 3">Ghost-of-Tsushima</option>
+                            <option value="Opción 3">Gran-Turismo7</option>
+                            <option value="Opción 3">Horizon-forbidden</option>
+                            <option value="Opción 3">Ratchet-and-clank-rift-apart</option>
+                            <option value="Opción 3">Returnal</option>
+                            <option value="Opción 3">Sackboy</option>
+                            <option value="Opción 3">Spiderman-Miles-Morales</option>
+                        </select>
+                    </div>
+                    <div class="mb-3">
+                        <label for="comentario" class="form-label">Comentario</label>
+                        <textarea class="form-control" id="comentario" name="comentario" rows="3"></textarea>
+                    </div>
+                    <div class="mb-3">
+                        <label for="puntuacion" class="form-label">Puntuación (1 al 5)</label>
+                        <input type="number" class="form-control" id="puntuacion" name="puntuacion" min="1" max="5">
+                    </div>
+                    <button type="submit" class="btn btn-primary">Guardar</button>
+                </form>
+                {% else %}
+                    <p>Para comentar, inicia sesión.</p>
+                    <a class="btn btn-primary" href="{% url 'sesion' %}">Iniciar sesión</a>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+
+
+    <h2>Comentarios Recientes</h2>
+        <div class="row mt-3">
+            {% for comentario in comentarios %}
+            <div class="col-md-6">
+                <div class="card mb-4">
+                    <div class="card-body">
+                        <h5 class="card-title">
+                            {% if comentario.tipo_videojuego == 'Opción 1' %}
+                                Uncharted-Legacy
+                            {% elif comentario.tipo_videojuego == 'Opción 2' %}
+                                Spider-man
+                            {% elif comentario.tipo_videojuego == 'Opción 3' %}
+                                Death-Stranding
+                            {% elif comentario.tipo_videojuego == 'Opción 4' %}
+                                Demons-Souls
+                            {% elif comentario.tipo_videojuego == 'Opción 5' %}
+                                Destruction-Allstars
+                            {% elif comentario.tipo_videojuego == 'Opción 6' %}
+                                Ghost-of-Tsushima
+                            {% elif comentario.tipo_videojuego == 'Opción 7' %}
+                                Gran-Turismo7
+                            {% elif comentario.tipo_videojuego == 'Opción 8' %}
+                                Horizon-forbidden
+                            {% elif comentario.tipo_videojuego == 'Opción 9' %}
+                                Ratchet-and-clank-rift-apart
+                            {% elif comentario.tipo_videojuego == 'Opción 10' %}
+                                Returnal
+                            {% elif comentario.tipo_videojuego == 'Opción 11' %}
+                                Sackboy
+                            {% elif comentario.tipo_videojuego == 'Opción 12' %}
+                                Spiderman-Miles-Morales
+                            {% endif %}
+                        </h5>
+                        <p class="card-text">{{ comentario.comentario }}</p>
+                        <p class="card-text"><small class="text-muted">Puntuación: {{ comentario.puntuacion }}</small></p>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+    
+
+    <br>
+
+    <div class="container">
+        <footer class="footer">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-4">
+                        <h3>Contacto</h3>
+                        <p>Teléfono: +569 98765423</p>
+                        <p>Email: d.play@gmail.com</p>
+                    </div>
+                    <div class="col-md-4">
+                        <h3>Enlaces</h3>
+                        <ul>
+                            <li><a href="#">Inicio</a></li>
+                            <li><a href="#">Tienda</a></li>
+                            <li><a href="#">Registro</a></li>
+                        </ul>
+                    </div>
+                    <div class="col-md-4">
+                        <h3>Legal</h3>
+                        <ul>
+                            <li><a href="#">Términos y condiciones</a></li>
+                            <li><a href="#">Política de privacidad</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </footer>
+    </div>
+    
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+</body>
+</html>

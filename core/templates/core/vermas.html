@@ -1,0 +1,314 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>D-Play</title>
+    <!-- Logo -->
+    {% load static %}
+    <link rel="icon" href="{% static 'core/img/logo.jpeg' %}">
+    <!-- foont -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Edu+NSW+ACT+Foundation:wght@500&display=swap" rel="stylesheet">
+    <!-- Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <!-- Custom CSS -->
+    {% load static %}
+    <link rel="stylesheet" href="'% static 'core/css/index.css'">
+
+</head>
+<body>
+  <header>
+    <nav class="navbar navbar-dark bg-dark navbar-expand-lg ">
+        <div class="container-fluid">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+                <div class="navbar-nav">
+                    <a class="nav-link active" aria-current="page" href="{% url 'index' %}">INICIO</a>
+                    <a class="nav-link" href="{% url 'videojuegos' %}">Noticias</a>
+                    <a class="nav-link" href="{% url 'foro' %}">Foro</a>
+                    {% if user.is_authenticated %}
+                        
+                        <a class="nav-link" href="{% url 'logout' %}">Cerrar sesión</a>
+                    {% else %}
+                        <a class="nav-link" href="{% url 'sesion' %}">Iniciar sesión</a>
+                        <a class="nav-link" href="{% url 'registrate' %}" tabindex="-1" aria-disabled="true">Regístrate</a>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </nav>
+</header>
+<br>
+    {% load static %}
+    <div class="container">
+        <div class="card mb-3" style="max-width: 2000px;">
+            <div class="row g-0">
+              <div class="col-md-4">
+                <img src="{% static 'core/img/ps5-games-uncharted-hub-image-block-02-en-21oct21.webp' %}" class="img-fluid rounded-start" alt="...">
+              </div>
+              <div class="col-md-8">
+                <div class="card-body">
+                  <h5 class="card-title">Uncharted-Legacy</h5>
+                  <p class="card-text">Juega como Nathan Drake y Chloe Frazer en sus propias aventuras individuales en las que se ven obligados a enfrentar sus pasados y forjar sus propios legados. Varios años después de su última aventura, el cazafortunas retirado Nathan Drake se ve obligado a regresar al mundo de los ladrones.
+                </p>
+                  <p class="card-text"><small class="text-muted">Categoria: Aventura, Acción</small></p>
+                  <label for="exampleFormControlTextarea1" class="form-label">Danos tu opinion:</label>
+                  <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                  <a id="enviar" class="btn btn-primary">Enviar</a>
+                </div>
+              </div>
+            </div>
+          </div>
+          {% load static %}
+          <div class="card mb-3" style="max-width: 2000px;">
+            <div class="row g-0">
+              <div class="col-md-4">
+                <img src="{% static 'core/img/ps5-game-carousel-spider-man-3-15jan24.webp' %}" class="img-fluid rounded-start" alt="...">
+              </div>
+              <div class="col-md-8">
+                <div class="card-body">
+                  <h5 class="card-title">Spider-man</h5>
+                  <p class="card-text"> Después de llevar la máscara durante ocho años, Peter Parker es un experto en combatir el crimen. Siente todo el poder de un Spider-Man más experimentado con combate improvisado, acrobacias dinámicas, recorrido urbano fluido e interacciones con el entorno.
+                </p>
+                  <p class="card-text"><small class="text-muted">Categoria: Aventura, Acción</small></p>
+                  
+          
+                </div>
+              </div>
+            </div>
+          </div>
+          {% load static %}
+          <div class="card mb-3" style="max-width: 2000px;">
+            <div class="row g-0">
+              <div class="col-md-4">
+                <img src="{% static 'core/img/ps5-games-death-stranding-image-block-04-en-25oct21.webp' %}" class="img-fluid rounded-start" alt="...">
+              </div>
+              <div class="col-md-8">
+                <div class="card-body">
+                  <h5 class="card-title">Death-Stranding</h5>
+                  <p class="card-text"> En el futuro, un evento misterioso conocido como el Death Stranding ha abierto una puerta entre los vivos y los muertos y ha permitido que criaturas del otro mundo deambulen por un planeta en ruinas habitado por una sociedad desolada.
+                </p>
+                  <p class="card-text"><small class="text-muted">Categoria: Aventura, Miedo, Acción</small></p>
+                  <label for="exampleFormControlTextarea1" class="form-label">Danos tu opinion:</label>
+                  <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                  <a id="enviar" href="#" class="btn btn-primary">Enviar</a>
+                </div>
+              </div>
+            </div>
+          </div>
+          {% load static %}
+          <div class="card mb-3" style="max-width: 2000px;">
+            <div class="row g-0">
+              <div class="col-md-4">
+                <img src="{% static 'core/img/ps5-games-demons-souls-image-block-01-en-28jul21.webp' %}" class="img-fluid rounded-start" alt="...">
+              </div>
+              <div class="col-md-8">
+                <div class="card-body">
+                  <h5 class="card-title">Demons-Souls</h5>
+                  <p class="card-text"> Demon's Souls es un juego de rol de acción en el que los jugadores asumen el papel de un guerrero, cuyo género y apariencia se personalizan al principio del juego, que explora la tierra maldita de Boletaria.
+                </p>
+                  <p class="card-text"><small class="text-muted">Categoria: Aventura, Miedo. Acción</small></p>
+                  <label for="exampleFormControlTextarea1" class="form-label">Danos tu opinion:</label>
+                  <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                  <a id="enviar" href="#" class="btn btn-primary">Enviar</a>
+                </div>
+              </div>
+            </div>
+          </div>
+          {% load static %}
+          <div class="card mb-3" style="max-width: 2000px;">
+            <div class="row g-0">
+              <div class="col-md-4">
+                <img src="{% static 'core/img/ps5-games-destruction-allstars-image-block-01-en-28jul21.webp' %}" class="img-fluid rounded-start" alt="...">
+              </div>
+              <div class="col-md-8">
+                <div class="card-body">
+                  <h5 class="card-title">Destruction-Allstars</h5>
+                  <p class="card-text">Intrépidos y carismáticos Destruction AllStars conforman el plantel de competidores internacionales que rivalizan por el Campeonato de la Federación Global de Destrucción. Estos chicos son capaces de reventar los índices de audiencia y los autos rivales. Líderes de eventos principales y cabezas de cartel.
+                </p>
+                  <p class="card-text"><small class="text-muted">Categoria: Aventura</small></p>
+                  <label for="exampleFormControlTextarea1" class="form-label">Danos tu opinion:</label>
+                  <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                  <a id="enviar" href="#" class="btn btn-primary">Enviar</a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {% load static %}
+          <div class="card mb-3" style="max-width: 2000px;">
+            <div class="row g-0">
+              <div class="col-md-4">
+                <img src="{% static 'core/img/ps5-games-ghost-of-tsushima-image-block-02-en-14oct21.webp' %}" class="img-fluid rounded-start" alt="...">
+              </div>
+              <div class="col-md-8">
+                <div class="card-body">
+                  <h5 class="card-title">Ghost-of-Tsushima</h5>
+                  <p class="card-text"> Desafía a tus enemigos con tu katana, domina el arco para eliminar las amenazas lejanas, aprende tácticas de sigilo para emboscar a los enemigos y explora una nueva historia en la Isla Iki. La edición Versión del Director incluye todo el contenido adicional lanzado hasta la fecha y contenido nuevo: Juego completo.
+                </p>
+                  <p class="card-text"><small class="text-muted">Categoria: Aventura</small></p>
+                  <label for="exampleFormControlTextarea1" class="form-label">Danos tu opinion:</label>
+                  <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                  <a id="enviar" href="#" class="btn btn-primary">Enviar</a>
+                </div>
+              </div>
+            </div>
+          </div>
+          {% load static %}
+          <div class="card mb-3" style="max-width: 2000px;">
+            <div class="row g-0">
+              <div class="col-md-4">
+                <img src="{% static 'core/img/ps5-games-gt7-hub-image-block-01-en-10mar22.webp' %}" class="img-fluid rounded-start" alt="...">
+              </div>
+              <div class="col-md-8">
+                <div class="card-body">
+                  <h5 class="card-title">Gran-Turismo7</h5>
+                  <p class="card-text">Gran Turismo 7 en PS5 hace que los pilotos vivan la experiencia en la pista. Siente la carretera con la respuesta háptica envolvente y escucha a los otros autos a tu alrededor con la claridad sonora sin precedentes del audio 3D.
+                </p>
+                  <p class="card-text"><small class="text-muted">Categoria: Aventura, Carrera</small></p>
+                  <label for="exampleFormControlTextarea1" class="form-label">Danos tu opinion:</label>
+                  <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                  <a id="enviar" href="#" class="btn btn-primary">Enviar</a>
+                </div>
+              </div>
+            </div>
+          </div>
+          {% load static %}
+          <div class="card mb-3" style="max-width: 2000px;">
+            <div class="row g-0">
+              <div class="col-md-4">
+                <img src="{% static 'core/img/ps5-games-horizon-forbidden-west-image-block-01-en-28jul21.webp' %}" class="img-fluid rounded-start" alt="...">
+              </div>
+              <div class="col-md-8">
+                <div class="card-body">
+                  <h5 class="card-title">Horizon-forbidden</h5>
+                  <p class="card-text">El videojuego se desarrolla seis meses después de Zero Dawn y continua la historia de Aloy, una joven cazadora y guerrera de la tribu Nora que viaja al Oeste Prohibido para investigar una misteriosa y mortífera plaga que amenaza la vida en la Tierra.
+                </p>
+                  <p class="card-text"><small class="text-muted">Categoria: Aventura, Supervivencia</small></p>
+                  <label for="exampleFormControlTextarea1" class="form-label">Danos tu opinion:</label>
+                  <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                  <a id="enviar" href="#" class="btn btn-primary">Enviar</a>
+                </div>
+              </div>
+            </div>
+          </div>
+          {% load static %}
+          <div class="card mb-3" style="max-width: 2000px;">
+            <div class="row g-0">
+              <div class="col-md-4">
+                <img src="{% static 'core/img/ps5-games-ratchet-and-clank-rift-apart-image-block-en-26aug22.webp' %}" class="img-fluid rounded-start" alt="...">
+              </div>
+              <div class="col-md-8">
+                <div class="card-body">
+                  <h5 class="card-title">Ratchet-and-clank-rift-apart</h5>
+                  <p class="card-text">Salta de una dimensión a otra con Ratchet y Clank para derrotar a un emperador malvado de otra realidad. Explora a toda velocidad una variedad de mundos</p>
+                  <p class="card-text"><small class="text-muted">Categoria: Aventura, Arcade</small></p>
+                  <label for="exampleFormControlTextarea1" class="form-label">Danos tu opinion:</label>
+                  <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                  <a id="enviar" href="#" class="btn btn-primary">Enviar</a>
+                </div>
+              </div>
+            </div>
+          </div>
+          {% load static %}
+          <div class="card mb-3" style="max-width: 2000px;">
+            <div class="row g-0">
+              <div class="col-md-4">
+                <img src="{% static 'core/img/ps5-games-returnal-image-block-01-en-28jul21.webp' %}" class="img-fluid rounded-start" alt="...">
+              </div>
+              <div class="col-md-8">
+                <div class="card-body">
+                  <h5 class="card-title">Returnal</h5>
+                  <p class="card-text">Sigue a Selene, una astronauta exploradora, quién aterriza en el planeta alienígena Atropos en busca de la misteriosa señal "Sombra Blanca", y se encuentra atrapada en un bucle de tiempo.</p>
+                  <p class="card-text"><small class="text-muted">Categoria: Aventura, Miedo</small></p>
+                  <label for="exampleFormControlTextarea1" class="form-label">Danos tu opinion:</label>
+                  <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                  <a id="enviar" href="#" class="btn btn-primary">Enviar</a>
+                </div>
+              </div>
+            </div>
+          </div>
+          {% load static %}
+          <div class="card mb-3" style="max-width: 2000px;">
+            <div class="row g-0">
+              <div class="col-md-4">
+                <img src="{% static 'core/img/ps5-games-sackboy-image-block-01-en-28jul21.webp' %}" class="img-fluid rounded-start" alt="...">
+              </div>
+              <div class="col-md-8">
+                <div class="card-body">
+                  <h5 class="card-title">Sackboy</h5>
+                  <p class="card-text">Sackboy: A Big Adventure ha sido desarrollado por Sumo Digital (responsables de LittleBigPlanet 3) y es un juego de exploración y plataformas con modo cooperativo para 4 jugadores, donde estos simpáticos muñecos de trapo se enfrentan a innumerables situaciones utilizando sus habilidades.</p>
+                  <p class="card-text"><small class="text-muted">Categoria: Aventura, Arcade</small></p>
+                  <label for="exampleFormControlTextarea1" class="form-label">Danos tu opinion:</label>
+                  <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                  <a id="enviar" href="#" class="btn btn-primary">Enviar</a>
+                </div>
+              </div>
+            </div>
+          </div>
+          {% load static %}
+        <div class="card mb-3" style="max-width: 2000px;">
+            <div class="row g-0">
+              <div class="col-md-4">
+                <img src="{% static 'core/img/ps5-games-spiderman-miles-morales-image-block-en-26aug22.webp' %}" class="img-fluid rounded-start" alt="...">
+              </div>
+              <div class="col-md-8">
+                <div class="card-body">
+                  <h5 class="card-title">Spiderman-Miles-Morales</h5>
+                  <p class="card-text">Una guerra por el control de la Nueva York de Marvel estalló entre una corporación de energía siniestra y un ejército criminal con tecnología de punta. Ahora que su hogar es el epicentro de la batalla, Miles debe aprender el costo de convertirse en héroe y decidir qué sacrificar por el bien mayor.</p>
+                  <p class="card-text"><small class="text-muted">Categoria: Aventura, Acción</small></p>
+                  <label for="exampleFormControlTextarea1" class="form-label">Danos tu opinion:</label>
+                  <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                  <a href="#" id="enviar" class="btn btn-primary">Enviar</a>
+                </div>
+              </div>
+            </div>
+          </div>
+    </div>
+<br>
+
+    <div class="container">
+    <footer class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4">
+                    <h3>Contacto</h3>
+                    <p>Teléfono: +569 98765423</p>
+                    <p>Email: d.play@gmail.com</p>
+                </div>
+                <div class="col-md-4">
+                    <h3>Enlaces</h3>
+                    <ul>
+                      {% load static %}
+                        <li><a href="#">Inicio</a></li>
+                        <li><a href="{% url 'registrate' %}">Registro</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-4">
+                    <h3>Legal</h3>
+                    <ul>
+                        <li><a href="#">Términos y condiciones</a></li>
+                        <li><a href="#">Política de privacidad</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </footer>
+</div>
+
+<script>
+  document.getElementById('enviar').addEventListener('click',function(){
+    alert('Enviado correctamente');
+
+  });
+</script>
+    <!-- Bootstrap -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+
+</body>
+</html>
